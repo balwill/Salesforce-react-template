@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import AppHeader from './components/AppHeader';
+import Form from './components/Form';
+import {BrowserRouter, Route} from 'react-router-dom';
+import { BrandBand } from '@salesforce/design-system-react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+class App extends React.Component {
+	render() {
+		return (
+			<BrowserRouter>
+				<BrandBand>
+					{/* Add stuff inside the div tags */}
+					<div style={{margin: '10px'}}>
+					<AppHeader />
+						<Route exact path="/">
+							<Form />
+						</Route>
+
+						<Route path="/about">
+							<div className="slds-box slds-theme_default">
+								<div className="slds-grid slds-gutters">
+									<div className="slds-box slds-col" style={{backgroundColor: 'white'}}>
+										<span>1</span>
+									</div>
+									<div className="slds-box slds-col" style={{backgroundColor: 'white'}}>
+										<span>2</span>
+									</div>
+								</div>
+							</div>
+						</Route>
+					</div>	
+				</BrandBand>			
+			</BrowserRouter>
+			
+		);
+	}
 }
 
-export default App;
+export default App
